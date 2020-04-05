@@ -51,8 +51,6 @@ describe('Todo Application', function() {
 
 		seed();
 
-
-		console.log(random_array(10));
 		random_array(checked_len)
 			.forEach( (item) => {
 				cy.get("li .toggle").eq(item).check();
