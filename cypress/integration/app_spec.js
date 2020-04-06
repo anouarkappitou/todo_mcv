@@ -1,4 +1,27 @@
-describe('Todo Application', function() {
+describe( "Todo single item", () => {
+                it("should add new item" , () => {
+                        cy.get(".new-todo")
+                                .type("TODO 1 {enter}")
+
+                        cy.get(".todo-list")
+                                .children().should('have.length', 1)
+
+                });
+                it("should have the right content", () => {
+                        cy.get(".new-todo")
+                                .type("TODO 1 {enter}")
+
+                        cy.get(".todo-list")
+                                .children().should('have.length', 1)
+
+
+                        cy.get(".todo-list label").eq(0).should('contain', "TODO 1");
+
+                });
+
+});
+
+describe('Todo Multi items', function() {
 
         let wish_list = [
                 "TODO 1",
@@ -47,9 +70,8 @@ describe('Todo Application', function() {
         }
 
 
-        let seed_and_check = ( checked_len ) => {
+        let check = ( checked_len ) => {
 
-                seed();
 
                 random_array(checked_len)
                         .forEach( (item) => {
@@ -59,32 +81,12 @@ describe('Todo Application', function() {
 
         }
 
-        context("adding items" , () => {
-
-                it("should add new item" , () => {
-                        cy.get(".new-todo")
-                                .type(wish_list[0] + "{enter}")
-
-                        cy.get(".todo-list")
-                                .children().should('have.length', 1)
-
-                });
-                it("should have the right content", () => {
-                        cy.get(".new-todo")
-                                .type(wish_list[0] + "{enter}")
-
-                        cy.get(".todo-list")
-                                .children().should('have.length', 1)
-
-
-                        cy.get(".todo-list label").eq(0).should('contain', wish_list[0]);
-
-                });
+        beforeEach(() => {
+                seed();
         });
 
         context("deleting items", () => {
                 it("should delete one item ", () => {
-                        seed();
 
                         cy.get(".destroy").eq(0).click({force: true});
 
@@ -95,7 +97,6 @@ describe('Todo Application', function() {
 
                 });
                 it("delete all items",() => {
-                        seed();
 
                         for( var i = 0; i < wish_list.length; i++ )
                         {
@@ -113,7 +114,7 @@ describe('Todo Application', function() {
 
 
                 it("delete completed items", () => {
-                        seed_and_check(8);
+                        check(8);
 
 
                         cy.get(".clear-completed")
@@ -134,7 +135,7 @@ describe('Todo Application', function() {
 
         context("filtering items", () => {
                 it("show by completed",() => {
-                        seed_and_check(4);
+                        check(4);
 
                         cy.get('[href="#/completed"]')
                                 .dblclick();
@@ -143,7 +144,7 @@ describe('Todo Application', function() {
                                 .children().should("have.length", 4 );
                 });
                 it("show by active",() => {
-                        seed_and_check(6);
+                        check(6);
 
                         cy.get('[href="#/active"]')
                                 .dblclick();
@@ -153,7 +154,7 @@ describe('Todo Application', function() {
 
                 });
                 it("show all",() => {
-                        seed_and_check(2);
+                        check(2);
 
                         cy.get('[href="#/all"]')
                                 .dblclick();
