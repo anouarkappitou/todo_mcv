@@ -1,4 +1,4 @@
 {
-        "baseUrl": "http://todomvc.com/examples/jquery/",
-        "supportFile": "cypress/support/commands.js"
+  "baseUrl": "http://todomvc.com/examples/jquery/",
+  "supportFile": "cypress/support/commands.js"
 }
