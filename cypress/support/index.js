@@ -1,0 +1,2 @@
+//include command
+require('./commands')

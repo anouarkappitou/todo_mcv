@@ -13,7 +13,7 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "test": "npm run start & cypress run",
+    "test": "cypress open",
     "cypress:version": "cypress version",
     "cypress:verify": "cypress verify",
     "cypress:open": "cypress open",
@@ -29,7 +29,6 @@
     "test:ci:chrome": "run-p --race start:ci cypress:run:chrome",
     "test:ci:headed": "run-p --race start:ci cypress:run:headed",
     "lint": "eslint --fix cypress/integration/*.js cypress/support/*.js cypress/plugins/*.js",
-    "effective:circle:config": "circleci config process circle.yml | sed /^#/d",
     "types": "tsc --noEmit",
     "e2e": "cypress run"
   },
