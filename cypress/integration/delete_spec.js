@@ -63,7 +63,6 @@ describe("deleting todos", () => {
                                         .check();
                 }
 
-
                 cy.get(".clear-completed")
                         .dblclick();
 
