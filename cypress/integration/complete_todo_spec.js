@@ -4,7 +4,7 @@ describe(`Complete TODO`, function () {
     cy.addTodos(4);
     cy.get(`.todo-list li`).as(`todos`);
   });
-  
+
   it(`should mark one item as completed`, function () {
     cy.checkCompleted(1);
 
@@ -36,8 +36,8 @@ describe(`Complete TODO`, function () {
 
   it(`should clear all completed items`, function () {
     cy.checkCompleted(4);
-    
-    cy.get('.clear-completed').click();
+
+    cy.get(".clear-completed").click();
 
     cy.get(`@todos`).should(`have.length`, 0);
   });

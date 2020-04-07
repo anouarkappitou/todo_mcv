@@ -20,6 +20,7 @@ describe("Todo MVC Footer Test", function () {
 
     cy.get(".todo-count").contains("0 items left");
   });
+
   it("should show 1 item left", function () {
     cy.addTodos(2);
 
@@ -27,6 +28,7 @@ describe("Todo MVC Footer Test", function () {
 
     cy.get(".todo-count").contains("1 item left");
   });
+
   it("should show 3 items left", function () {
     cy.addTodos(4);
 

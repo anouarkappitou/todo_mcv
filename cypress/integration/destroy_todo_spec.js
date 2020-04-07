@@ -10,6 +10,7 @@ describe("Remove TODO", function () {
 
     cy.get(".todo-list").find("li").should("have.length", 1);
   });
+  
   it("should remove multiple items ", function () {
     cy.addTodos(5);
 
