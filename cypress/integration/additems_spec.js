@@ -13,6 +13,7 @@ describe('new items',function(){
 
         cy.get('.todo-count').contains('1 item left')
         cy.get('.todo-list li').should('have.length',1)
+        cy.get('.view label').eq(0).contains('learn cypress')
         cy.get(".new-todo").should('have.text','')
     })
     it('add two items',function(){
@@ -27,6 +28,7 @@ describe('new items',function(){
 
         cy.get('.todo-count').contains('2 items left')
         cy.get('.todo-list li').should('have.length',2)
+        cy.get('.todo-list li').eq(0).contains('learn cypress')
         cy.get('.todo-list li').eq(1).contains('do todos tests')
         cy.get(".new-todo").should('have.text','')
     })

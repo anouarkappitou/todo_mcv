@@ -4,12 +4,16 @@ describe('delete items',function(){
     })
 
     it('delete one item',function(){
-        const textToEnter = 'learn cypress'
-      
-        cy.get('.new-todo').type(textToEnter+'{enter}')
-        cy.get('.destroy').click({force: true})
+        let textToEnter =[
+            "learn cypress",
+            "do todos tests",
+            "send homework"
+        ];
+        insertText(textToEnter)
+        cy.get('.destroy').eq(0).click({force: true})
 
-        cy.get('.footer').should('not.be.visible')
+        cy.get('.todo-count').contains('2 items left')
+        cy.get('.todo-list li').should('have.length',2)
     })
     it('delete all items',function(){
         let textToEnter =[
@@ -39,6 +43,7 @@ describe('delete items',function(){
         cy.get('.clear-completed').click()
 
         cy.get('.todo-count').contains('1 item left')
+        cy.get('.view label').eq(0).contains('learn cypress')
         cy.get('.filters li a').eq(2).click() 
         cy.get('.todo-list li').should('have.length',0)
       })
@@ -47,6 +52,6 @@ describe('delete items',function(){
         array.forEach((item)=>{
             cy.get('.new-todo').type(item+'{enter}')
           })
-    }
+        }
  
 })
