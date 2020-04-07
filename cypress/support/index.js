@@ -1,3 +1,1 @@
-beforeEach(function () {
-	cy.visit("/")
-})
+
